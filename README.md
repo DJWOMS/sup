@@ -167,13 +167,17 @@ from ..services.support_service import SupportService
 
 ## Что дополнительно можно почитать
 [DTO в Python. Способы реализации](https://habr.com/ru/articles/752936/)
+
 [Python и чистая архитектура](https://habr.com/ru/companies/piter/articles/588669/)
+
 [Архитектура ПО](https://backendinterview.ru/architecture/index.html)
+
 [Bounded contexts будь проще](https://youtu.be/r_HYgERfMos?si=ZbcPAzIaFzGpkB_D)
 
 ## Старт с Docker
 ### Переименовать .env.example на .env
 
+### Запустить сборку
 ```
 docker-compose up --build
 ```
@@ -196,6 +200,7 @@ docker exec -it app-net-back alembic revision --autogenerate -m 'названи�
 ```
 
 ## Старт без Docker
+### Переименовать .env.example на .env
 
 ### Создать виртуальное окружение
 ```
