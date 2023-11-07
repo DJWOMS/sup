@@ -1,10 +1,10 @@
-from sqlalchemy import String
+from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
 
-from .base_model import Base
+from src.lib.models.base_model import Base
 
 
-class  User(Base):
+class UserModel(Base):
     __tablename__ = 'users'
 
     name: Mapped[str]
@@ -16,4 +16,4 @@ class  User(Base):
     nick_meet: Mapped[str]
     nick_gitlab: Mapped[str]
     nick_github: Mapped[str]
-    role_id: Mapped[str]
+    role_id: Mapped[str] = mapped_column(ForeignKey('role.id'), nullable=True)
