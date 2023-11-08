@@ -6,8 +6,8 @@ from ..models.user_model import UserModel
 
 
 class UserRepository:
-    async def create(self, db_session: Session, data: CreateUser):
-        instance = UserModel(**data.model_dump())
+    async def create(self, db_session: Session, data: CreateUser, password):
+        instance = UserModel(**data.model_dump(), password=password)
         db_session.add(instance)
         await db_session.commit()
         await db_session.refresh(instance)

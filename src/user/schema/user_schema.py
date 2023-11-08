@@ -5,7 +5,6 @@ class UserBase(BaseModel):
     name: str
     surname: str
     email: EmailStr
-    password: str
     name_telegram: str
     nick_telegram: str
     nick_meet: str
