@@ -16,7 +16,6 @@ class UserService:
 
     async def create(self, data: CreateUser, db_session: Session):
         password = self.hash_password()
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa", password)
         return await self.repository.create(db_session, data, password)
 
     def generate_password(self, length=20):
