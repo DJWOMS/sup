@@ -15,3 +15,14 @@ class UserBase(BaseModel):
 
 class CreateUser(UserBase):
     pass
+
+
+class UserResponse(UserBase):
+    id: int
+
+
+class UserList(UserBase):
+    id: int
+
+
+
