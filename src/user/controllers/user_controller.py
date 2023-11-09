@@ -12,16 +12,11 @@ async def create_user(dto: CreateUser, service: IUserService):
 
 
 @router.get("/user/{pk}", response_model=UserResponse)
-async def get_user(
-        pk: int,
-        service: IUserService
-):
+async def get_user(pk: int, service: IUserService):
     return await service.get(pk)
 
 
 @router.get("/", response_model=list[UserList])
-async def get_list_users(
-        service: IUserService
-):
+async def get_list_users(service: IUserService):
     return await service.get_list()
 

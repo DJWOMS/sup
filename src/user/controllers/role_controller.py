@@ -7,10 +7,7 @@ router = APIRouter(prefix="/role", tags=["role"])
 
 
 @router.post("/")
-async def create_role(
-    dto: CreateRole,
-    service: IRoleService
-):
+async def create_role(dto: CreateRole, service: IRoleService) -> CreateRole:
     return await service.create(dto)
 
 
