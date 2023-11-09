@@ -7,7 +7,7 @@ router = APIRouter(prefix="/user", tags=["user"])
 
 
 @router.post("/", response_model=CreateUser)
-async def create_user(dto: CreateUser, service: IUserService) -> CreateUser:
+async def create_user(dto: CreateUser, service: IUserService):
     return await service.create(dto)
 
 
