@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr, ConfigDict, model_validator
+from pydantic import BaseModel
 
 
 class RoleBase(BaseModel):
@@ -8,3 +8,12 @@ class RoleBase(BaseModel):
 
 class CreateRole(RoleBase):
     pass
+
+
+class ResponseRole(RoleBase):
+    id: int
+
+
+class ResponseRoleList(RoleBase):
+    id: int
+
