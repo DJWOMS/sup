@@ -17,11 +17,11 @@ class CreateUser(UserBase):
     pass
 
 
-class UserResponse(UserBase):
+class ResponseUser(UserBase):
     id: int
 
 
-class UserList(UserBase):
+class ResponseUserList(UserBase):
     id: int
 
 
