@@ -22,8 +22,8 @@ class UserRepository:
         raw = await self.session.execute(stmt)
         return raw.scalar_one_or_none()
 
-    async def get_list(self):
-        stmt = select(UserModel)
+    async def get_list(self, limit: int):
+        stmt = select(UserModel).limit(limit)
         raw = await self.session.execute(stmt)
         return raw.scalars()
 
