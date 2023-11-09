@@ -10,3 +10,9 @@ class RoleService:
 
     async def create(self, dto: CreateRole):
         return await self.repository.create(dto)
+
+    async def get(self, pk: int):
+        return await self.repository.get(pk)
+
+    async def get_list(self):
+        return await self.repository.get_list()
