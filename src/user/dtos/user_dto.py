@@ -17,6 +17,10 @@ class CreateUser(UserBase):
     pass
 
 
+class UpdateUser(UserBase):
+    pass
+
+
 class ResponseUser(UserBase):
     id: int
 
