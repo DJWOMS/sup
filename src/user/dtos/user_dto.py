@@ -1,15 +1,15 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, constr
 
 
 class UserBase(BaseModel):
-    name: str
-    surname: str
+    name: constr(max_length=20)
+    surname: constr(max_length=20)
     email: EmailStr
-    name_telegram: str
-    nick_telegram: str
-    nick_meet: str
-    nick_gitlab: str
-    nick_github: str
+    name_telegram: constr(max_length=50)
+    nick_telegram: constr(max_length=50)
+    nick_meet: constr(max_length=50)
+    nick_gitlab: constr(max_length=50)
+    nick_github: constr(max_length=50)
     role_id: int
 
 
@@ -19,6 +19,10 @@ class CreateUser(UserBase):
 
 class UpdateUser(UserBase):
     pass
+
+
+class UpdatePassword(BaseModel):
+    password: str
 
 
 class ResponseUser(UserBase):
