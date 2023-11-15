@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
 from ..dependencies.services import IUserService
-from src.user.dtos.user_dto import CreateUser, ResponseUser, ResponseUserList, UpdateUser
+from src.user.dtos.user_dto import CreateUser, ResponseUser, ResponseUserList, UpdateUser, UpdatePassword
 
 router = APIRouter(prefix="/user", tags=["user"])
 
@@ -14,6 +14,11 @@ async def create_user(dto: CreateUser, service: IUserService):
 @router.put("/{pk}", response_model=UpdateUser)
 async def update_user(pk: int, dto: UpdateUser, service: IUserService):
     return await service.update(pk, dto)
+
+
+@router.put("/password/{pk}", response_model=UpdatePassword)
+async def update_pass(pk: int, dto: UpdatePassword, service: IUserService):
+    return await service.update_pass(pk, dto)
 
 
 @router.delete("/{pk}")

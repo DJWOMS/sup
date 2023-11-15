@@ -1,5 +1,5 @@
 from ..dependencies.repositories import IUserRepository
-from src.user.dtos.user_dto import CreateUser, UpdateUser
+from src.user.dtos.user_dto import CreateUser, UpdateUser, UpdatePassword
 from src.user.user_entity import UserEntity
 
 
@@ -14,6 +14,10 @@ class UserService:
 
     async def update(self, pk: int, dto: UpdateUser):
         return await self.repository.update(dto, pk)
+
+    async def update_pass(self, pk: int, dto: UpdatePassword):
+        new_password = UserEntity.set_password(dto.password)
+        return await self.repository.update_pass(new_password, pk)
 
     async def delete(self, pk: int):
         return await self.repository.delete(pk)
