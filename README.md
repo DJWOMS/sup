@@ -175,7 +175,9 @@ from ..services.support_service import SupportService
 [Bounded contexts будь проще](https://youtu.be/r_HYgERfMos?si=ZbcPAzIaFzGpkB_D)
 
 ## Старт с Docker
-### Переименовать .env.example на .env
+### Переименовать 
+
+.env.example на .env
 
 ### Запустить сборку
 ```
@@ -200,7 +202,9 @@ docker exec -it app-back alembic revision --autogenerate -m 'название м
 ```
 
 ## Старт без Docker
-### Переименовать .env.example на .env
+### Переименовать 
+
+.env.example на .env
 
 ### Создать виртуальное окружение
 ```
