@@ -20,18 +20,24 @@ class UserEntity:
     role_id: int
     password: str | None = None
 
-    def generate_password(self, length=20):
+    def get_new_hash_password(self):
+        password = self.generate_password()
+        self.password = self.hash_password(password)
+        return self
+
+    @staticmethod
+    def generate_password(length=20):
         character_sheet = string.ascii_letters + string.digits + '!@#$%^&*()_+=-'
         rand_pass = ''.join(secrets.choice(character_sheet)
                             for i in range(length))
         return rand_pass
 
-    def hash_password(self, password: str) -> str:
+    @staticmethod
+    def hash_password(password: str) -> str:
         hashed = argon2.hash_password(password.encode('utf-8'))
         return hashed.decode('utf-8')
 
-    def get_new_hash_password(self):
-        password = self.generate_password()
-        self.password = self.hash_password(password)
-        return self
+    @classmethod
+    def set_password(cls, password):
+        return cls.hash_password(password)
 

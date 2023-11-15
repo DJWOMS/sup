@@ -1,9 +1,9 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, constr
 
 
 class RoleBase(BaseModel):
-    name: str
-    color: str
+    name: constr(max_length=20)
+    color: constr(max_length=6)
 
 
 class CreateRole(RoleBase):
