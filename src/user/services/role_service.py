@@ -14,5 +14,5 @@ class RoleService:
     async def get(self, pk: int):
         return await self.repository.get(pk)
 
-    async def get_list(self):
-        return await self.repository.get_list()
+    async def get_list(self, limit: int):
+        return await self.repository.get_list(limit)
