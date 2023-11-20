@@ -8,6 +8,7 @@ from pydantic import EmailStr
 
 @dataclass
 class UserEntity:
+
     name: str
     surname: str
     email: EmailStr
