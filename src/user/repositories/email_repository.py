@@ -15,3 +15,4 @@ class EmailRepository:
         await self.session.refresh(instance)
         print(f"https://127.0.0.1:8000/verify/{instance.code}")
         return instance
+
