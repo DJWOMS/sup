@@ -8,7 +8,6 @@ from pydantic import EmailStr
 
 @dataclass
 class UserEntity:
-
     name: str
     surname: str
     email: EmailStr
@@ -41,3 +40,8 @@ class UserEntity:
     def set_password(cls, password):
         return cls.hash_password(password)
 
+    def create_verify_code(self, length=16):
+        character_sheet = string.ascii_letters + string.digits
+        rand_cod = ''.join(secrets.choice(character_sheet)
+                           for i in range(length))
+        return rand_cod
