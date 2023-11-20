@@ -13,6 +13,5 @@ class EmailRepository:
         self.session.add(instance)
         await self.session.commit()
         await self.session.refresh(instance)
-        print(f"https://127.0.0.1:8000/verify/{instance.code}")
         return instance
 

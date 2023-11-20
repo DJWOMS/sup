@@ -1,3 +1,4 @@
+from .notification_service import NotificationService
 from ..dependencies.repositories import IUserRepository, IEmailRepository
 from src.user.dtos.user_dto import CreateUser, UpdateUser, UpdatePassword
 from src.user.user_entity import UserEntity
@@ -16,6 +17,7 @@ class UserService:
         user_verify = user.create_verify_code()
         user = await self.repository.create(user_pass)
         await self.email_repository.create(CreateVerify(user_id=user.id, code=user_verify))
+        await NotificationService().email_confirmation(user_verify=user_verify)
         return user
 
     async def update(self, pk: int, dto: UpdateUser):
