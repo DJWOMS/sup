@@ -1,5 +1,5 @@
 from .notification_service import NotificationService
-from ..dependencies.repositories import IUserRepository, IEmailRepository
+from ..dependencies.repositories import IUserRepository, IEmailRepository, INotificationService
 from src.user.dtos.user_dto import CreateUser, UpdateUser, UpdatePassword
 from src.user.user_entity import UserEntity
 from ..dtos.email__dto import CreateVerify
@@ -7,9 +7,10 @@ from ..dtos.email__dto import CreateVerify
 
 class UserService:
 
-    def __init__(self, repository: IUserRepository, email_repository: IEmailRepository):
+    def __init__(self, repository: IUserRepository, email_repository: IEmailRepository, send_repository: INotificationService):
         self.repository = repository
         self.email_repository = email_repository
+        self.send_repository = send_repository
 
     async def create(self, dto: CreateUser):
         user = UserEntity(**dto.model_dump())
@@ -17,7 +18,7 @@ class UserService:
         user_verify = user.create_verify_code()
         user = await self.repository.create(user_pass)
         await self.email_repository.create(CreateVerify(user_id=user.id, code=user_verify))
-        await NotificationService().email_confirmation(user_verify=user_verify)
+        await self.send_repository.send_mail(user_verify=user_verify)
         return user
 
     async def update(self, pk: int, dto: UpdateUser):
