@@ -4,6 +4,7 @@ from src.exceptions import InviteError
 from src.invitation.invitation_dto import InvitationCreate, ResponseInvitationList, InvitationCheckCode
 from src.invitation.dependencies.services import IInvitationService
 
+
 router = APIRouter(prefix="/invitation", tags=["invitation"])
 
 
