@@ -15,6 +15,7 @@ class InvitationEntity:
         character_sheet = string.ascii_letters + string.digits
         rand_code = ''.join(secrets.choice(character_sheet)
                             for i in range(length))
+        print(f"https://www.google.ru/registration/{rand_code}")
         return rand_code
 
     def date_generation(self):
