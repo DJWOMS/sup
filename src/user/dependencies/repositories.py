@@ -9,4 +9,4 @@ from ..services.notification_service import NotificationService
 IUserRepository = Annotated[UserRepository, Depends()]
 IRoleRepository = Annotated[RoleRepository, Depends()]
 IEmailRepository = Annotated[EmailRepository, Depends()]
-INotificationService = Annotated[NotificationService, Depends()]
+INotificationRepository = Annotated[NotificationService, Depends()]

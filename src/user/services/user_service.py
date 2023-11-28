@@ -1,5 +1,4 @@
-from .notification_service import NotificationService
-from ..dependencies.repositories import IUserRepository, IEmailRepository, INotificationService
+from ..dependencies.repositories import IUserRepository, IEmailRepository, INotificationRepository
 from src.user.dtos.user_dto import CreateUser, UpdateUser, UpdatePassword
 from src.user.user_entity import UserEntity
 from ..dtos.email__dto import CreateVerify
@@ -7,7 +6,10 @@ from ..dtos.email__dto import CreateVerify
 
 class UserService:
 
-    def __init__(self, repository: IUserRepository, email_repository: IEmailRepository, send_repository: INotificationService):
+    def __init__(self, repository: IUserRepository,
+                 email_repository: IEmailRepository,
+                 send_repository: INotificationRepository
+                 ):
         self.repository = repository
         self.email_repository = email_repository
         self.send_repository = send_repository

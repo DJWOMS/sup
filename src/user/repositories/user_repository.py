@@ -1,7 +1,7 @@
 from sqlalchemy import select, update, delete
 
 from ..dependencies.session import ISession
-from ..dtos.user_dto import UpdateUser, UpdatePassword, CreateUser
+from ..dtos.user_dto import UpdateUser
 from ..models.user_model import UserModel
 from ..user_entity import UserEntity
 
