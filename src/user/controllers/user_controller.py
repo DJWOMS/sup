@@ -21,7 +21,7 @@ async def update_pass(pk: int, dto: UpdatePassword, service: IUserService):
     return await service.update_pass(pk, dto)
 
 
-@router.delete("/{pk}")
+@router.delete("/del/{pk}")
 async def delete_message(pk: int, service: IUserService):
     return await service.delete(pk)
 
