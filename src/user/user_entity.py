@@ -18,6 +18,7 @@ class UserEntity:
     nick_gitlab: str
     nick_github: str
     role_id: int
+    right_id: int
     password: str | None = None
 
     def get_new_hash_password(self):
