@@ -18,6 +18,7 @@ class UserEntity:
     nick_gitlab: str
     nick_github: str
     role_id: int
+    right_id: int
     password: str | None = None
 
     def get_new_hash_password(self):
@@ -41,3 +42,8 @@ class UserEntity:
     def set_password(cls, password):
         return cls.hash_password(password)
 
+    def create_verify_code(self, length=16):
+        character_sheet = string.ascii_letters + string.digits
+        rand_cod = ''.join(secrets.choice(character_sheet)
+                           for i in range(length))
+        return rand_cod

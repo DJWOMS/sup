@@ -1,6 +1,6 @@
 from ..dependencies.repositories import IRoleRepository
 
-from src.user.dtos.role_dto import CreateRole
+from src.user.dtos.role_dto import CreateRole, UpdateRole
 
 
 class RoleService:
@@ -10,6 +10,12 @@ class RoleService:
 
     async def create(self, dto: CreateRole):
         return await self.repository.create(dto)
+
+    async def update(self, pk: int, dto: UpdateRole):
+        return await self.repository.update(dto, pk)
+
+    async def delete(self, pk: int):
+        return await self.repository.delete(pk)
 
     async def get(self, pk: int):
         return await self.repository.get(pk)

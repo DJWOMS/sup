@@ -1,0 +1,2 @@
+class InviteError(Exception):
+    pass

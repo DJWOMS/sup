@@ -10,10 +10,13 @@ class CreateRole(RoleBase):
     pass
 
 
+class UpdateRole(RoleBase):
+    pass
+
+
 class ResponseRole(RoleBase):
     id: int
 
 
 class ResponseRoleList(RoleBase):
     id: int
-

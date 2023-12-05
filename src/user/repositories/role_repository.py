@@ -1,7 +1,7 @@
-from sqlalchemy import select
+from sqlalchemy import select, delete, update
 
 from src.user.dependencies.session import ISession
-from src.user.dtos.role_dto import CreateRole
+from src.user.dtos.role_dto import CreateRole, UpdateRole
 from src.user.models.role_model import RoleModel
 
 
@@ -16,6 +16,17 @@ class RoleRepository:
         await self.session.commit()
         await self.session.refresh(instance)
         return instance
+
+    async def update(self, dto: UpdateRole, pk: int):
+        stmt = update(RoleModel).values(**dto.model_dump()).filter_by(id=pk).returning(RoleModel)
+        raw = await self.session.execute(stmt)
+        await self.session.commit()
+        return raw.scalar_one()
+
+    async def delete(self, pk: int) -> None:
+        stmt = delete(RoleModel).where(RoleModel.id == pk)
+        await self.session.execute(stmt)
+        await self.session.commit()
 
     async def get(self, pk: int):
         stmt = select(RoleModel).filter_by(id=pk)
