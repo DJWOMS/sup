@@ -8,3 +8,6 @@ class VerifyEmailModel(Base):
 
     code: Mapped[str]
     user_id: Mapped[int]
+
+
+

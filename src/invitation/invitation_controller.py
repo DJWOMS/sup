@@ -13,14 +13,14 @@ async def create_invitation(service: IInvitationService):
     return await service.create()
 
 
-@router.get("/get_list", response_model=list[ResponseInvitationList])
-async def get_list_invitation(service: IInvitationService):
-    return await service.get_list()
-
-
 @router.get("/", response_model=InvitationCheckCode)
 async def check_code(code: str, service: IInvitationService):
     try:
         return await service.check(code)
     except InviteError as e:
         raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.get("/get_list", response_model=list[ResponseInvitationList])
+async def get_list_invitation(service: IInvitationService):
+    return await service.get_list()

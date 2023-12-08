@@ -31,6 +31,7 @@ class UserEntity:
         character_sheet = string.ascii_letters + string.digits + '!@#$%^&*()_+=-'
         rand_pass = ''.join(secrets.choice(character_sheet)
                             for i in range(length))
+        print(rand_pass, "A"*100)
         return rand_pass
 
     @staticmethod

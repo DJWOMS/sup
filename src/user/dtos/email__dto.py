@@ -8,3 +8,7 @@ class VerifyBase(BaseModel):
 
 class CreateVerify(VerifyBase):
     pass
+
+
+class CheckEmail(VerifyBase):
+    pass
