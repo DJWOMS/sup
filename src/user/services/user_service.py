@@ -17,7 +17,6 @@ class UserService:
     async def create(self, dto: CreateUser):
         user = UserEntity(**dto.model_dump())
         user = user.get_new_hash_password()
-        print(user.password, "$"*90)
         user_verify = user.create_verify_code()
         user = await self.repository.create(user)
         await self.email_repository.create(CreateVerify(user_id=user.id, code=user_verify))

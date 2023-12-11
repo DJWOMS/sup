@@ -1,8 +1,8 @@
 import secrets
 import string
 from dataclasses import dataclass
+from argon2 import PasswordHasher
 
-import argon2
 from pydantic import EmailStr
 
 
@@ -29,15 +29,16 @@ class UserEntity:
     @staticmethod
     def generate_password(length=20):
         character_sheet = string.ascii_letters + string.digits + '!@#$%^&*()_+=-'
-        rand_pass = ''.join(secrets.choice(character_sheet)
-                            for i in range(length))
+        rand_pass = ''.join(secrets.choice(character_sheet) for i in range(length))
         print(rand_pass, "A"*100)
         return rand_pass
 
     @staticmethod
     def hash_password(password: str) -> str:
-        hashed = argon2.hash_password(password.encode('utf-8'))
-        return hashed.decode('utf-8')
+        # TODO salt нужно вынести в настройки
+        salt = "BD^G$#bIUb9PHBF(G#E$_790G(UB#$9E"
+        hashed = PasswordHasher().hash(password.encode('utf-8'), salt=salt.encode('utf-8'))
+        return hashed
 
     @classmethod
     def set_password(cls, password):
@@ -45,6 +46,4 @@ class UserEntity:
 
     def create_verify_code(self, length=16):
         character_sheet = string.ascii_letters + string.digits
-        rand_cod = ''.join(secrets.choice(character_sheet)
-                           for i in range(length))
-        return rand_cod
+        return ''.join(secrets.choice(character_sheet) for i in range(length))
