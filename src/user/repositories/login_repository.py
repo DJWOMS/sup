@@ -1,7 +1,6 @@
-from sqlalchemy import select, update
+from sqlalchemy import select
 
 from src.user.dependencies.session import ISession
-from src.user.dtos.login_dto import CreateLogin
 from src.user.models.user_model import UserModel
 
 
