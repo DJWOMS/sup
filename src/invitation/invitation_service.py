@@ -22,7 +22,6 @@ class InvitationService:
         invite = await self.repository.get(code)
         at_date = date.today()
         if invite is None:
-            print("Fuck you Bill")
             raise InviteError("Not found")
         elif at_date > invite.at_valid:
             await self.repository.update("expired", invite.id)
