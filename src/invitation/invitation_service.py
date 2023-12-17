@@ -18,14 +18,10 @@ class InvitationService:
         dto = InvitationCreate(code=code, at_valid=date)
         return await self.repository.create(dto)
 
-    async def get_list(self):
-        return await self.repository.get_list()
-
     async def check(self, code: str):
         invite = await self.repository.get(code)
         at_date = date.today()
         if invite is None:
-            print("Fuck you Bill")
             raise InviteError("Not found")
         elif at_date > invite.at_valid:
             await self.repository.update("expired", invite.id)
@@ -35,3 +31,6 @@ class InvitationService:
 
         invite = await self.repository.update("visited", invite.id)
         return invite
+
+    async def get_list(self):
+        return await self.repository.get_list()
