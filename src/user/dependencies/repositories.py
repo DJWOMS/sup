@@ -1,6 +1,7 @@
 from typing import Annotated
 from fastapi import Depends
 
+from ..repositories.login_repository import LoginRepository
 from ..repositories.rights_repository import RightRepository
 from ..repositories.role_repository import RoleRepository
 from ..repositories.user_repository import UserRepository
@@ -12,3 +13,4 @@ IRoleRepository = Annotated[RoleRepository, Depends()]
 IEmailRepository = Annotated[EmailRepository, Depends()]
 INotificationRepository = Annotated[NotificationService, Depends()]
 IRightRepository = Annotated[RightRepository, Depends()]
+ILoginRepository = Annotated[LoginRepository, Depends()]
