@@ -13,6 +13,7 @@
 [Слоистая Архитектура на FastAPI](https://youtu.be/8Im74b55vFc?si=0-ZwffTNCdT6VZAx)
 
 ## Инструменты
+- Python 3.12
 - FastAPI
 - SqlAlchemy
 - Postgres
