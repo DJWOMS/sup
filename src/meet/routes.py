@@ -1,9 +1,9 @@
 from fastapi import APIRouter
 
-from src.mit import mit_controller
+from src.meet import meet_controller
 
 
 def get_context_router():
     router = APIRouter()
-    router.include_router(mit_controller.router)
+    router.include_router(meet_controller.router)
     return router
