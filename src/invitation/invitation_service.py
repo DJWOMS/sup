@@ -34,3 +34,19 @@ class InvitationService:
 
     async def get_list(self):
         return await self.repository.get_list()
+
+
+# {
+#     name: "addsd",
+#     date: 26-36-2035,
+#     users: [
+#         {
+#             user_id: 1,
+#             color: red
+#         },
+#         {
+#             user_id: 2,
+#             color: red
+#         }
+#     ]
+# }
