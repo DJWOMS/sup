@@ -14,11 +14,11 @@ class UserEntity:
     email: EmailStr
     name_telegram: str
     nick_telegram: str
-    nick_meet: str
+    nick_google_meet: str
     nick_gitlab: str
     nick_github: str
     role_id: int
-    right_id: int
+    permission_id: int
     password: str | None = None
 
     def get_new_hash_password(self):

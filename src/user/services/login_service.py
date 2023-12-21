@@ -19,4 +19,3 @@ class LoginService:
             raise LoginError("Подтвердите аккаунт через почту")
 
         return login
-

@@ -1,22 +1,22 @@
 from pydantic import BaseModel, constr
 
 
-class RoleBase(BaseModel):
+class RoleBaseDTO(BaseModel):
     name: constr(max_length=20)
     color: constr(max_length=6)
 
 
-class CreateRole(RoleBase):
+class CreateRoleDTO(RoleBaseDTO):
     pass
 
 
-class UpdateRole(RoleBase):
+class GetRoleListDTO(RoleBaseDTO):
+    id: int
+
+
+class GetRoleDTO(RoleBaseDTO):
+    id: int
+
+
+class UpdateRoleDTO(RoleBaseDTO):
     pass
-
-
-class ResponseRole(RoleBase):
-    id: int
-
-
-class ResponseRoleList(RoleBase):
-    id: int

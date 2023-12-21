@@ -2,16 +2,15 @@ from datetime import datetime
 from pydantic import BaseModel
 
 
-class MeetBase(BaseModel):
+class MeetBaseDTO(BaseModel):
     title: str
     date: datetime
 
 
-class UserMeet(BaseModel):
+class UserDTO(BaseModel):
     user_id: int
     color: str = "white"
 
 
-class CreateUserMeet(MeetBase):
-    users: list[UserMeet]
-
+class CreateMeetDTO(MeetBaseDTO):
+    users: list[UserDTO]

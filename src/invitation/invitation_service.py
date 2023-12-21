@@ -1,7 +1,7 @@
 from datetime import date
 
 from src.exceptions import InviteError
-from src.invitation.invitation_dto import InvitationCreate
+from src.invitation.invitation_dto import InvitationCreateDTO
 from src.invitation.invitation_entity import InvitationEntity
 from src.invitation.dependencies.repositories import IInvitationRepository
 
@@ -14,9 +14,12 @@ class InvitationService:
     async def create(self):
         invite = InvitationEntity()
         code = invite.generate_code()
-        date = invite.date_generation()
-        dto = InvitationCreate(code=code, at_valid=date)
+        date = invite.generation_date()
+        dto = InvitationCreateDTO(code=code, at_valid=date)
         return await self.repository.create(dto)
+
+    async def get_list(self):
+        return await self.repository.get_list()
 
     async def check(self, code: str):
         invite = await self.repository.get(code)
@@ -31,22 +34,3 @@ class InvitationService:
 
         invite = await self.repository.update("visited", invite.id)
         return invite
-
-    async def get_list(self):
-        return await self.repository.get_list()
-
-
-# {
-#     name: "addsd",
-#     date: 26-36-2035,
-#     users: [
-#         {
-#             user_id: 1,
-#             color: red
-#         },
-#         {
-#             user_id: 2,
-#             color: red
-#         }
-#     ]
-# }

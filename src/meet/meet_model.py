@@ -18,4 +18,3 @@ class UserMeetModel(Base):
     meet_id: Mapped[int] = mapped_column(ForeignKey('meets.id'))
     user_id: Mapped[int] = mapped_column(ForeignKey('users.id'))
     color: Mapped[str]
-

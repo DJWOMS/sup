@@ -1,14 +1,14 @@
 from pydantic import BaseModel, constr
 
 
-class VerifyBase(BaseModel):
+class VerifyBaseDTO(BaseModel):
     code: constr(max_length=20)
     user_id: int
 
 
-class CreateVerify(VerifyBase):
+class CreateEmailCodeDTO(VerifyBaseDTO):
     pass
 
 
-class CheckEmail(VerifyBase):
+class GetEmailCodeDTO(VerifyBaseDTO):
     pass
