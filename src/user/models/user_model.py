@@ -18,4 +18,4 @@ class UserModel(Base):
     nick_github: Mapped[str]
     active: Mapped[bool] = mapped_column(default=False)
     role_id: Mapped[int] = mapped_column(ForeignKey('role.id'), nullable=True)
-    right_id: Mapped[int] = mapped_column(ForeignKey('right.id'), nullable=True)
+    permission_id: Mapped[int] = mapped_column(ForeignKey('permissions.id'), nullable=True)
