@@ -9,11 +9,9 @@ x-env: &env
     - .env
 
 services:
-  web:
+  api:
     <<: [*default-app, *env]
-    container_name: app-back
-#    expose:
-#      - 8000
+    container_name: sup-back
     ports:
       - 8000:8000
     volumes:
@@ -24,10 +22,8 @@ services:
 
   db:
     <<: *env
-    container_name: app-db
+    container_name: sup-db
     image: postgres:15.3-alpine
-#    expose:
-#      - 5432
     ports:
       - 5432:5432
     healthcheck:
@@ -36,7 +32,7 @@ services:
       timeout: 5s
       retries: 5
     volumes:
-      - apppg:/var/lib/postgresql/data
+      - sup_pg_data:/var/lib/postgresql/data
 
 volumes:
-  apppg:
+  sup_pg_data:
