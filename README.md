@@ -7,12 +7,40 @@
 
 Управление командами и участниками стажировки.
 
+## Старт
+    переименовать
+    .env.example на .env
+
+### Запустить сборку
+```
+docker-compose up --build
+```
+
+### Alembic migrate
+Не выключая контейнеры выполнить команду
+```
+docker exec -it sup-back alembic upgrade head
+```
+
+### Перейти по адресу
+```
+http:\\127.0.0.1:8000\docs
+```
+
+## Alembic создание migrations
+Не выключая контейнеры выполнить команду
+```
+docker exec -it sup-back alembic revision --autogenerate -m 'название модели или миграции'
+```
+
+
 #### Будет полезным для ознакомления (видео)
 [Слоистая архитектура](https://youtu.be/aF5_niKPL6c?si=sEqSQYFqU9kPsVDp)
 
 [Слоистая Архитектура на FastAPI](https://youtu.be/8Im74b55vFc?si=0-ZwffTNCdT6VZAx)
 
 ## Инструменты
+- Python 3.12
 - FastAPI
 - SqlAlchemy
 - Postgres
@@ -173,75 +201,3 @@ from ..services.support_service import SupportService
 [Архитектура ПО](https://backendinterview.ru/architecture/index.html)
 
 [Bounded contexts будь проще](https://youtu.be/r_HYgERfMos?si=ZbcPAzIaFzGpkB_D)
-
-## Старт с Docker
-### Переименовать .env.example на .env
-
-### Запустить сборку
-```
-docker-compose up --build
-```
-
-### Alembic migrate
-Не выключая контейнеры выполнить команду
-```
-docker exec -it app-back alembic upgrade head
-```
-
-### Перейти по адресу
-```
-http:\\127.0.0.1:8000\docs
-```
-
-## Alembic создание migrations
-Не выключая контейнеры выполнить команду
-```
-docker exec -it app-back alembic revision --autogenerate -m 'название модели или миграции'
-```
-
-## Старт без Docker
-### Переименовать .env.example на .env
-
-### Создать виртуальное окружение
-```
-python -m venv venv
-```
-
-### Активировать виртуальное окружение
-
-- Windows
-```
-.\venv\Scripts\activate
-```
-- Linux
-```
-source /venv/bin/activate
-```
-### Установить poetry
-```
-pip install poetry
-```
-### Установить зависимости
-```
-poetry install
-```
-
-### Alembic migrate
-```
-alembic upgrade head
-```
-
-### Запуск сервера
-```
-uvicorn src.main:app --reload
-```
-### Перейти по адресу
-```
-http:\\127.0.0.1:8000\docs
-```
-
-
-## Alembic создание migrations
-```
-alembic revision --autogenerate -m 'название модели или миграции'
-```

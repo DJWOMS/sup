@@ -1,19 +1,19 @@
 from pydantic import BaseModel, constr, conint
 
 
-class RightBase(BaseModel):
+class PermissionBase(BaseModel):
     title: constr(max_length=20)
     code: conint(ge=0, le=999999)
     description: constr(max_length=300)
 
 
-class CreateRight(RightBase):
+class CreatePermissionDTO(PermissionBase):
     pass
 
 
-class UpdateRight(RightBase):
+class UpdatePermissionDTO(PermissionBase):
     pass
 
 
-class ResponseRightList(RightBase):
+class ResponsePermissionListDTO(PermissionBase):
     id: int
