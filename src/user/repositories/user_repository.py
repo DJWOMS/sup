@@ -1,7 +1,7 @@
 from sqlalchemy import select, update, delete
 
 from ..dependencies.session import ISession
-from ..dtos.user_dto import UpdateUser, UpdatePassword, CreateUser
+from ..dtos.user_dto import UpdateUser
 from ..models.user_model import UserModel
 from ..user_entity import UserEntity
 
@@ -20,6 +20,12 @@ class UserRepository:
 
     async def update(self, dto: UpdateUser, pk: int):
         stmt = update(UserModel).values(**dto.model_dump()).filter_by(id=pk).returning(UserModel)
+        raw = await self.session.execute(stmt)
+        await self.session.commit()
+        return raw.scalar_one()
+
+    async def update_active(self, active: bool, pk: int):
+        stmt = update(UserModel).values(active=active).filter_by(id=pk).returning(UserModel)
         raw = await self.session.execute(stmt)
         await self.session.commit()
         return raw.scalar_one()

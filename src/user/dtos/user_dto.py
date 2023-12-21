@@ -11,6 +11,7 @@ class UserBase(BaseModel):
     nick_gitlab: constr(max_length=50)
     nick_github: constr(max_length=50)
     role_id: int
+    right_id: int
 
 
 class CreateUser(UserBase):
