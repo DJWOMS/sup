@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 
 class MeetBase(BaseModel):
-    meet_title: str
+    title: str
     date: datetime
 
 
@@ -14,3 +14,4 @@ class UserMeet(BaseModel):
 
 class CreateUserMeet(MeetBase):
     users: list[UserMeet]
+
