@@ -8,9 +8,9 @@ from .routes import get_apps_router
 
 def get_application() -> FastAPI:
     application = FastAPI(
-        title=settings.PROJECT_NAME,
+        title="СУП",
         debug=settings.DEBUG,
-        version=settings.VERSION
+        version="0.1.0"
     )
     application.include_router(get_apps_router())
 
