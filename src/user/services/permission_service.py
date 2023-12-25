@@ -1,5 +1,5 @@
 from ..dependencies.repositories import IPermissionRepository
-from ..dtos.permission_dto import CreatePermissionDTO, UpdatePermissionDTO, ResponsePermissionListDTO
+from ..dtos.permission_dto import CreatePermissionDTO, UpdatePermissionDTO, GetPermissionListDTO
 
 
 class PermissionService:
@@ -10,11 +10,11 @@ class PermissionService:
     async def create(self, dto: CreatePermissionDTO):
         return await self.repository.create(dto)
 
+    async def get_list(self, limit: int) -> GetPermissionListDTO:
+        return await self.repository.get_list(limit)
+
     async def update(self, pk: int, dto: UpdatePermissionDTO):
         return await self.repository.update(dto, pk)
 
     async def delete(self, pk: int):
         return await self.repository.delete(pk)
-
-    async def get_list(self, limit: int) -> ResponsePermissionListDTO:
-        return await self.repository.get_list(limit)

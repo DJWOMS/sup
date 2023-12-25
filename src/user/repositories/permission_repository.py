@@ -17,6 +17,11 @@ class PermissionRepository:
         await self.session.refresh(instance)
         return instance
 
+    async def get_list(self, limit: int):
+        stmt = select(PermissionModel).limit(limit)
+        raw = await self.session.execute(stmt)
+        return raw.scalars()
+
     async def update(self, dto: UpdatePermissionDTO, pk: int):
         stmt = (
             update(PermissionModel)
@@ -32,8 +37,3 @@ class PermissionRepository:
         stmt = delete(PermissionModel).where(PermissionModel.id == pk)
         await self.session.execute(stmt)
         await self.session.commit()
-
-    async def get_list(self, limit: int):
-        stmt = select(PermissionModel).limit(limit)
-        raw = await self.session.execute(stmt)
-        return raw.scalars()

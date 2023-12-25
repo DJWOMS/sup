@@ -13,7 +13,7 @@ class UserModel(Base):
     password: Mapped[str]
     name_telegram: Mapped[str]
     nick_telegram: Mapped[str]
-    nick_meet: Mapped[str]
+    nick_google_meet: Mapped[str]
     nick_gitlab: Mapped[str]
     nick_github: Mapped[str]
     active: Mapped[bool] = mapped_column(default=False)

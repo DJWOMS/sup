@@ -2,15 +2,15 @@ from fastapi import APIRouter, HTTPException
 
 from src.exceptions import InviteError
 from src.user.dependencies.services import IEmailService
-from src.user.dtos.email__dto import CheckEmail
+from src.user.dtos.email__dto import GetEmailCodeDTO
 
 router = APIRouter(prefix="/email", tags=["email"])
 
 
-@router.get("/", response_model=CheckEmail)
-async def check_code_email(code: str, service: IEmailService):
+@router.get("/", response_model=GetEmailCodeDTO)
+async def check_email_code(code: str, service: IEmailService):
     try:
-        return await service.check(code)
+        return await service.check_code(code)
     except InviteError as e:
         raise HTTPException(status_code=400, detail=str(e))
 

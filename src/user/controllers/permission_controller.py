@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
 from ..dependencies.services import IPermissionService
-from ..dtos.permission_dto import CreatePermissionDTO, UpdatePermissionDTO, ResponsePermissionListDTO
+from ..dtos.permission_dto import CreatePermissionDTO, UpdatePermissionDTO, GetPermissionListDTO
 
 router = APIRouter(prefix="/permissions", tags=["permissions"])
 
@@ -11,7 +11,7 @@ async def create_permission(dto: CreatePermissionDTO, service: IPermissionServic
     return await service.create(dto)
 
 
-@router.get("/", response_model=list[ResponsePermissionListDTO])
+@router.get("/", response_model=list[GetPermissionListDTO])
 async def get_list_permission(service: IPermissionService, limit: int = 10):
     return await service.get_list(limit)
 
