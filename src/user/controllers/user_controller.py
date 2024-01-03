@@ -6,12 +6,12 @@ from src.user.dtos.user_dto import CreateUser, ResponseUser, ResponseUserList, U
 router = APIRouter(prefix="/user", tags=["user"])
 
 
-@router.post("/", response_model=CreateUser)
+@router.post("/", response_model=ResponseUser)
 async def create_user(dto: CreateUser, service: IUserService):
     return await service.create(dto)
 
 
-@router.put("/{pk}", response_model=UpdateUser)
+@router.put("/{pk}", response_model=ResponseUser)
 async def update_user(pk: int, dto: UpdateUser, service: IUserService):
     return await service.update(pk, dto)
 
