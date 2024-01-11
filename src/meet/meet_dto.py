@@ -2,7 +2,7 @@ from datetime import datetime
 from pydantic import BaseModel
 
 
-class MeetDTO(BaseModel):
+class MeetBaseDTO(BaseModel):
     title: str
     date: datetime
 
@@ -12,8 +12,16 @@ class UserMeetDTO(BaseModel):
     color: str = "white"
 
 
-class CreateMeetDTO(MeetDTO):
+class CreateMeetDTO(MeetBaseDTO):
     users: list[UserMeetDTO]
+
+
+class UpdateMeetDTO(CreateMeetDTO):
+    pass
+
+
+class MeetDTO(MeetBaseDTO):
+    id: int
 
 
 class UserMeetResponseDTO(BaseModel):
@@ -27,9 +35,9 @@ class UserMeetResponseDTO(BaseModel):
         from_attributes = True
 
 
-class MeetResponseDTO(MeetDTO):
+class MeetResponseDTO(MeetBaseDTO):
     id: int
-    users: list[UserMeetResponseDTO]
+    users: list[UserMeetResponseDTO] | None = None
 
     class Config:
         from_attributes = True

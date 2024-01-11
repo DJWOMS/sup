@@ -11,19 +11,18 @@ class MeetModel(Base):
 
     title: Mapped[str]
     date: Mapped[datetime]
-    users: Mapped[list['UserMeetModel']] = relationship('UserMeetModel', lazy='raise_on_sql')
-    # users: Mapped[list[UserModel]] = relationship(
-    #     UserModel,
-    #     secondary="users_meet"
-    # )
+    users: Mapped[list['UserMeetModel']] = relationship(
+        'UserMeetModel',
+        # cascade='save-update, merge, delete',
+        # passive_deletes=True,
+        lazy='raise_on_sql'
+    )
 
 
 class UserMeetModel(Base):
     __tablename__ = 'users_meet'
 
-    meet_id: Mapped[int] = mapped_column(ForeignKey('meets.id'))
-    user_id: Mapped[int] = mapped_column(ForeignKey('users.id'))
+    meet_id: Mapped[int] = mapped_column(ForeignKey('meets.id', ondelete='CASCADE'))
+    user_id: Mapped[int] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'))
     color: Mapped[str]
     user: Mapped['UserModel'] = relationship('UserModel', lazy='raise_on_sql')
-
-
