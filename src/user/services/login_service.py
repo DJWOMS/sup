@@ -1,21 +1,32 @@
+from datetime import timedelta
+
+from src.user.auth.token_service import ITokenService
 from ..dependencies.repositories import ILoginRepository
+from src.user.auth.token_model import Token
 from ..user_entity import UserEntity
+from ...config.project_config import settings
 from ...exceptions import LoginError
 
 
 class LoginService:
 
-    def __init__(self, repository: ILoginRepository):
+    def __init__(self, repository: ILoginRepository, token_service: ITokenService):
         self.repository = repository
+        self.token_service = token_service
 
-    async def check(self,  email: str, password: str):
-        login = await self.repository.get(email=email)
+    async def check(self,  email: str, password: str) -> Token:
+        user = await self.repository.get(email=email)
         password1 = UserEntity.set_password(password)
-        if login is None:
+        if user is None:
             raise LoginError("invalid or login")
-        elif login.password != password1:
+        elif user.password != password1:
             raise LoginError("invalid or password")
-        elif not login.active:
+        elif not user.active:
             raise LoginError("Подтвердите аккаунт через почту")
 
-        return login
+        access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+        access_token = Token(access_token=self.token_service.create_access_token(
+            user.id, expires_delta=access_token_expires,
+            )
+        )
+        return access_token

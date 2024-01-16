@@ -1,4 +1,4 @@
-from ..dependencies.repositories import IUserRepository, IEmailRepository, INotificationRepository
+from ..dependencies.repositories import IUserRepository, IEmailRepository
 from src.user.dtos.user_dto import CreateUserDTO, UpdateUserDTO, UpdatePasswordDTO
 from src.user.user_entity import UserEntity
 from ..dtos.email__dto import CreateEmailCodeDTO
@@ -8,11 +8,9 @@ class UserService:
 
     def __init__(self, repository: IUserRepository,
                  email_repository: IEmailRepository,
-                 send_repository: INotificationRepository
                  ):
         self.repository = repository
         self.email_repository = email_repository
-        self.send_repository = send_repository
 
     async def create(self, dto: CreateUserDTO):
         user = UserEntity(**dto.model_dump())
@@ -20,7 +18,6 @@ class UserService:
         user_verify = user.create_verify_code()
         user = await self.repository.create(user)
         await self.email_repository.create(CreateEmailCodeDTO(user_id=user.id, code=user_verify))
-        await self.send_repository.send_mail(user_verify=user_verify)
         return user
 
     async def get_list(self, limit: int):
