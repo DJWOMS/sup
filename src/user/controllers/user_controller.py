@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 
+from ..auth.auth_service import CurrentUser
 from ..dependencies.services import IUserService
 from src.user.dtos.user_dto import CreateUserDTO, GetUserDTO, GetUserListDTO, UpdateUserDTO, UpdatePasswordDTO
 
@@ -12,8 +13,10 @@ async def create_user(dto: CreateUserDTO, service: IUserService):
 
 
 @router.get("/", response_model=list[GetUserListDTO])
-async def get_list_users(service: IUserService, limit: int = 50):
-    return await service.get_list(limit)
+async def get_list_users(current_user: CurrentUser, service: IUserService, limit: int = 50):
+    if current_user:
+        return await service.get_list(limit)
+    return []
 
 
 @router.get("/{pk}", response_model=GetUserDTO)
