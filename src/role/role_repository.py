@@ -1,8 +1,8 @@
 from sqlalchemy import select, delete, update
 
 from src.user.dependencies.session import ISession
-from src.user.dtos.role_dto import CreateRoleDTO, UpdateRoleDTO
-from src.user.models.role_model import RoleModel
+from src.role.role_dto import CreateRoleDTO, UpdateRoleDTO
+from src.role.role_model import RoleModel
 
 
 class RoleRepository:

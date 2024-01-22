@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from ..dependencies.services import IPermissionService
-from ..dtos.permission_dto import CreatePermissionDTO, UpdatePermissionDTO, GetPermissionListDTO
+from src.permission.dependencies.services import IPermissionService
+from src.permission.permission_dto import CreatePermissionDTO, UpdatePermissionDTO, GetPermissionListDTO
 
 router = APIRouter(prefix="/permissions", tags=["permissions"])
 
