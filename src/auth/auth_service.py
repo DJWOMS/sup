@@ -6,10 +6,10 @@ from fastapi.security import OAuth2PasswordBearer
 from pydantic import ValidationError
 
 from src.config.project_config import settings
-from src.user.auth.auth_dto import TokenPayload
+from src.auth.auth_dto import TokenPayload
 from src.user.dependencies.repositories import IUserRepository
-from src.user.dtos.user_dto import GetUserDTO
-from src.user.auth.token_service import ALGORITHM
+from src.user.user_dto import GetUserDTO
+from src.auth.token_service import ALGORITHM
 
 reusable_oauth2 = OAuth2PasswordBearer(
     tokenUrl=f"{settings.API_V1_STR}/login/access-token"

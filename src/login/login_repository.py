@@ -1,7 +1,7 @@
 from sqlalchemy import select
 
 from src.user.dependencies.session import ISession
-from src.user.models.user_model import UserModel
+from src.user.user_model import UserModel
 
 
 class LoginRepository:

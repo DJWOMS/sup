@@ -1,8 +1,8 @@
 from sqlalchemy import select
 
-from ..dependencies.session import ISession
-from ..dtos.email__dto import CreateEmailCodeDTO
-from ..models.email_model import VerifyEmailModel
+from src.user.dependencies.session import ISession
+from src.email.email__dto import CreateEmailCodeDTO
+from src.email.email_model import VerifyEmailModel
 
 
 class EmailRepository:

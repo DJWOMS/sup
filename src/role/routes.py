@@ -1,8 +1,9 @@
 from fastapi import APIRouter
-from . import user_controller
+
+from ..role import role_controller
 
 
 def get_context_router():
     router = APIRouter()
-    router.include_router(user_controller.router)
+    router.include_router(role_controller.router)
     return router

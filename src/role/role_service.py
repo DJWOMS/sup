@@ -1,6 +1,5 @@
-from ..dependencies.repositories import IRoleRepository
-
-from src.user.dtos.role_dto import CreateRoleDTO, UpdateRoleDTO
+from src.role.dependencies.repositories import IRoleRepository
+from src.role.role_dto import CreateRoleDTO, UpdateRoleDTO
 
 
 class RoleService:

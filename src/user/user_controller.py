@@ -1,8 +1,8 @@
 from fastapi import APIRouter
 
-from ..auth.auth_service import CurrentUser
-from ..dependencies.services import IUserService
-from src.user.dtos.user_dto import CreateUserDTO, GetUserDTO, GetUserListDTO, UpdateUserDTO, UpdatePasswordDTO
+from src.auth.auth_service import CurrentUser
+from src.user.dependencies.services import IUserService
+from src.user.user_dto import CreateUserDTO, GetUserDTO, GetUserListDTO, UpdateUserDTO, UpdatePasswordDTO
 
 router = APIRouter(prefix="/user", tags=["user"])
 

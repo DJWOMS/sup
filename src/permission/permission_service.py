@@ -1,5 +1,5 @@
-from ..dependencies.repositories import IPermissionRepository
-from ..dtos.permission_dto import CreatePermissionDTO, UpdatePermissionDTO, GetPermissionListDTO
+from src.permission.dependencies.repositories import IPermissionRepository
+from src.permission.permission_dto import CreatePermissionDTO, UpdatePermissionDTO, GetPermissionListDTO
 
 
 class PermissionService:

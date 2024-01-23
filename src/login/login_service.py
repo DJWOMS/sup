@@ -1,11 +1,11 @@
 from datetime import timedelta
 
-from src.user.auth.token_service import ITokenService
-from ..dependencies.repositories import ILoginRepository
-from src.user.auth.token_model import Token
-from ..user_entity import UserEntity
-from ...config.project_config import settings
-from ...exceptions import LoginError
+from src.auth.token_service import ITokenService
+from src.auth.token_model import Token
+from src.login.dependencies.repositories import ILoginRepository
+from src.user.user_entity import UserEntity
+from src.config.project_config import settings
+from src.exceptions import LoginError
 
 
 class LoginService:
