@@ -4,3 +4,11 @@ class InviteError(Exception):
 
 class LoginError(Exception):
     pass
+
+
+class NotFoundError(Exception):
+    pass
+
+
+class AlreadyExistError(Exception):
+    pass
