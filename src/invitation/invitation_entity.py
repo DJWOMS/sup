@@ -6,7 +6,7 @@ from datetime import timedelta, date
 class InvitationEntity:
     DAYS = 7
 
-    def invitation_code(self):
+    def get_invitation_code(self):
         code = self.generate_code()
 
         return code
@@ -18,6 +18,6 @@ class InvitationEntity:
         print(f"https://www.google.ru/registration/{rand_code}")
         return rand_code
 
-    def date_generation(self):
-        stop_dates = date.today() + timedelta(days=self.DAYS)
-        return stop_dates
+    def generation_date(self):
+        dates = date.today() + timedelta(days=self.DAYS)
+        return dates
