@@ -1,8 +1,9 @@
 # flake8: noqa F401
-from src.lib.models.base_model import Base
-from src.user.user_model import UserModel
-from src.role.role_model import RoleModel
-from src.email.email_model import VerifyEmailModel
-from src.invitation.invitation_model import InvitationModel
-from src.permission.permission_model import PermissionModel
-from src.meet.meet_model import MeetModel, UserMeetModel
+from src.infra.models.base_model import Base
+from src.infra.models.user_model import UserModel
+from src.infra.models.role_model import RoleModel
+from src.infra.models.verify_email_model import VerifyEmailModel
+from src.infra.models.invitation_model import InvitationModel
+from src.infra.models.permission_model import PermissionModel
+from src.infra.models.meet_model import MeetModel
+from src.infra.models.user_meet_model import UserMeetModel
