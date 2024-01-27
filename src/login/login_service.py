@@ -1,7 +1,7 @@
 from datetime import timedelta
 
 from src.auth.token_service import ITokenService
-from src.auth.token_model import Token
+from src.auth.token_dto import Token
 from src.login.dependencies.repositories import ILoginRepository
 from src.user.user_entity import UserEntity
 from src.config.project_config import settings
