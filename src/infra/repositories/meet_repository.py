@@ -3,9 +3,10 @@ from sqlalchemy.orm import selectinload, joinedload
 
 from src.exceptions import NotFoundError
 from src.meet.meet_dto import CreateMeetDTO, UpdateMeetDTO, MeetResponseDTO, UserMeetResponseDTO
-from src.meet.meet_model import UserMeetModel, MeetModel
-from src.user.dependencies.session import ISession
-from src.user.models.user_model import UserModel
+
+from ..database.session import ISession
+from ..models.meet_model import MeetModel
+from ..models.user_meet_model import UserMeetModel
 
 
 class MeetRepository:

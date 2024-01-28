@@ -1,8 +1,9 @@
 from sqlalchemy import select, update, delete
 
-from src.user.dependencies.session import ISession
 from src.permission.permission_dto import CreatePermissionDTO, UpdatePermissionDTO
-from src.permission.permission_model import PermissionModel
+
+from ..database.session import ISession
+from ..models.permission_model import PermissionModel
 
 
 class PermissionRepository:

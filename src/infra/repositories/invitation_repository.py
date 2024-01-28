@@ -1,8 +1,9 @@
 from sqlalchemy import select, update
 
 from src.invitation.invitation_dto import InvitationCreateDTO
-from src.invitation.invitation_model import InvitationModel
-from src.user.dependencies.session import ISession
+
+from ..database.session import ISession
+from ..models.invitation_model import InvitationModel
 
 
 class InvitationRepository:

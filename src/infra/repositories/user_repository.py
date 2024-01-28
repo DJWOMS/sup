@@ -1,9 +1,10 @@
 from sqlalchemy import select, update, delete
 
-from src.user.dependencies.session import ISession
-from src.user.user_dto import UpdateUserDTO
-from src.user.user_model import UserModel
 from src.user.user_entity import UserEntity
+from src.user.user_dto import UpdateUserDTO
+
+from ..database.session import ISession
+from ..models.user_model import UserModel
 
 
 class UserRepository:
