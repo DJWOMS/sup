@@ -5,9 +5,9 @@ from fastapi import HTTPException, status, Depends
 from fastapi.security import OAuth2PasswordBearer
 from pydantic import ValidationError
 
-from src.config.project_config import settings
+from config.project_config import settings
 from src.auth.auth_dto import TokenPayload
-from src.user.dependencies.repositories import IUserRepository
+from ..dependencies.repositories import IUserRepository
 from src.user.user_dto import GetUserDTO
 from src.auth.token_service import ALGORITHM
 

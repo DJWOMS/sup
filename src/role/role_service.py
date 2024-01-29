@@ -1,4 +1,4 @@
-from src.role.dependencies.repositories import IRoleRepository
+from ..dependencies.repositories import IRoleRepository
 from src.role.role_dto import CreateRoleDTO, UpdateRoleDTO
 
 

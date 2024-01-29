@@ -3,7 +3,7 @@ from datetime import date
 from src.exceptions import InviteError
 from src.invitation.invitation_dto import InvitationCreateDTO
 from src.invitation.invitation_entity import InvitationEntity
-from src.invitation.dependencies.repositories import IInvitationRepository
+from ..dependencies.repositories import IInvitationRepository
 
 
 class InvitationService:

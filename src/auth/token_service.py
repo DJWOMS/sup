@@ -4,7 +4,7 @@ from typing import Annotated
 import jwt
 from fastapi import Depends
 
-from src.config.project_config import settings
+from config.project_config import settings
 
 ALGORITHM = "HS256"
 
