@@ -1,9 +1,9 @@
 from fastapi import APIRouter
 
-from ..dependencies.services import IRoleService
+from src.dependencies.services import IRoleService
 from src.role.role_dto import CreateRoleDTO, GetRoleDTO, GetRoleListDTO, UpdateRoleDTO
 
-router = APIRouter(prefix="/role", tags=["role"])
+router = APIRouter(prefix="/role")
 
 
 @router.post("/", response_model=GetRoleDTO)

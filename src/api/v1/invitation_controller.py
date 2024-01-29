@@ -2,10 +2,10 @@ from fastapi import APIRouter, HTTPException
 
 from src.exceptions import InviteError
 from src.invitation.invitation_dto import InvitationCreateDTO, GetInvitationListDTO, InvitationCheckCodeDTO
-from ..dependencies.services import IInvitationService
+from src.dependencies.services import IInvitationService
 
 
-router = APIRouter(prefix="/invitation", tags=["invitation"])
+router = APIRouter(prefix="/invitation")
 
 
 @router.post("/", response_model=InvitationCreateDTO)

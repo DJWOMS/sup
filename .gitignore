@@ -37,3 +37,4 @@ make.bat
 
 doc-dev
 .vscode/*
+/docker-compose.local.yml

@@ -3,7 +3,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from config.project_config import settings
-from .routes import get_apps_router
+from src.api import (
+    system_routes,
+    v1_router,
+)
 
 
 def get_application() -> FastAPI:
@@ -12,7 +15,8 @@ def get_application() -> FastAPI:
         debug=settings.DEBUG,
         version="0.2.0"
     )
-    application.include_router(get_apps_router())
+    application.include_router(system_routes, prefix="/system", tags=['system'])
+    application.include_router(v1_router, prefix="/v1", tags=['v1'])
 
     application.add_middleware(
         CORSMiddleware,
