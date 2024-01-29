@@ -1,8 +1,8 @@
-from src.email.dependencies.repositories import IEmailRepository
-from src.user.dependencies.repositories import IUserRepository
+from ..dependencies.repositories import IEmailRepository
+from ..dependencies.repositories import IUserRepository
 from src.user.user_dto import CreateUserDTO, UpdateUserDTO, UpdatePasswordDTO
 from src.user.user_entity import UserEntity
-from src.email.email__dto import CreateEmailCodeDTO
+from src.email.email_dto import CreateEmailCodeDTO
 
 
 class UserService:
