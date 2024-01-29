@@ -1,4 +1,4 @@
-from src.meet.dependencies.repositories import IMeetRepository
+from ..dependencies.repositories import IMeetRepository
 from src.meet.meet_dto import CreateMeetDTO, UpdateMeetDTO, MeetResponseDTO, MeetDTO
 
 
