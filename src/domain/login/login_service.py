@@ -11,11 +11,11 @@ from src.exceptions import LoginError
 
 class LoginService:
 
-    def __init__(self, repository: ILoginRepository, token_service: ITokenService):
+    def __init__(self, repository: ILoginRepository, token_service: ITokenService) -> None:
         self.repository = repository
         self.token_service = token_service
 
-    async def check(self,  email: str, password: str) -> Token:
+    async def check(self, email: str, password: str) -> Token:
         user = await self.repository.get(email=email)
         password1 = UserEntity.set_password(password)
         if user is None:
