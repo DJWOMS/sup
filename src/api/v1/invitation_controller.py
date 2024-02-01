@@ -5,7 +5,7 @@ from src.invitation.invitation_dto import InvitationCreateDTO, GetInvitationList
 from src.dependencies.services import IInvitationService
 
 
-router = APIRouter(prefix="/invitation")
+router = APIRouter(prefix="/invitation", tags=["invitation"])
 
 
 @router.post("/", response_model=InvitationCreateDTO)

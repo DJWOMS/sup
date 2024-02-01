@@ -3,7 +3,7 @@ from fastapi import APIRouter
 from src.dependencies.services import IPermissionService
 from src.permission.permission_dto import CreatePermissionDTO, UpdatePermissionDTO, GetPermissionListDTO
 
-router = APIRouter(prefix="/permissions")
+router = APIRouter(prefix="/permissions", tags=["permissions"])
 
 
 @router.post("/", response_model=CreatePermissionDTO)

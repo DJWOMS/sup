@@ -3,7 +3,7 @@ from src.exception_handler import error_handler
 from src.dependencies.services import IMeetService
 from src.meet.meet_dto import CreateMeetDTO, UpdateMeetDTO, MeetDTO, MeetResponseDTO
 
-router = APIRouter(prefix="/meet")
+router = APIRouter(prefix="/meet", tags=["meet"])
 
 
 @router.post("/", response_model=MeetDTO)

@@ -4,7 +4,7 @@ from src.auth.token_dto import Token
 from src.exceptions import LoginError
 from src.dependencies.services import ILoginService
 
-router = APIRouter(prefix="/login")
+router = APIRouter(prefix="/login", tags=["login"])
 
 
 @router.post("/", response_model=Token)
