@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 
-from ..dependencies.services import IEmailService
+from src.dependencies.services import IEmailService
 from src.exceptions import InviteError
 from src.email.email_dto import GetEmailCodeDTO
 

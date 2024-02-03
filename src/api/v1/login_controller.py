@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 
 from src.auth.token_dto import Token
 from src.exceptions import LoginError
-from ..app.dependencies.services import ILoginService
+from src.dependencies.services import ILoginService
 
 router = APIRouter(prefix="/login", tags=["login"])
 
