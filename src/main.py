@@ -16,7 +16,7 @@ def get_application() -> FastAPI:
         version="0.2.0"
     )
     application.include_router(system_routes, prefix="/system", tags=['system'])
-    application.include_router(v1_router, prefix="/v1", tags=['v1'])
+    application.include_router(v1_router, prefix="/api/v1")
 
     application.add_middleware(
         CORSMiddleware,
