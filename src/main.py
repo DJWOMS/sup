@@ -2,7 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from config.project_config import settings
+from src.app.config.project_config import settings
 from src.api import (
     system_routes,
     v1_router,

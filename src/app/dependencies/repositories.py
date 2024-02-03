@@ -1,13 +1,13 @@
 from typing import Annotated
 from fastapi import Depends
 
-from ..infra.repositories.invitation_repository import InvitationRepository
-from ..infra.repositories.email_repository import EmailRepository
-from ..infra.repositories.login_repository import LoginRepository
-from ..infra.repositories.meet_repository import MeetRepository
-from ..infra.repositories.permission_repository import PermissionRepository
-from ..infra.repositories.role_repository import RoleRepository
-from ..infra.repositories.user_repository import UserRepository
+from src.infra.repositories.invitation_repository import InvitationRepository
+from src.infra.repositories.email_repository import EmailRepository
+from src.infra.repositories.login_repository import LoginRepository
+from src.infra.repositories.meet_repository import MeetRepository
+from src.infra.repositories.permission_repository import PermissionRepository
+from src.infra.repositories.role_repository import RoleRepository
+from src.infra.repositories.user_repository import UserRepository
 
 
 IUserRepository = Annotated[UserRepository, Depends()]

@@ -1,6 +1,6 @@
 from sqlalchemy import select, delete, update
 
-from src.role.role_dto import CreateRoleDTO, UpdateRoleDTO
+from src.domain.role.role_dto import CreateRoleDTO, UpdateRoleDTO
 
 from ..database.session import ISession
 from ..models.role_model import RoleModel

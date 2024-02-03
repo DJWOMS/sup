@@ -1,6 +1,6 @@
 from sqlalchemy import select, update
 
-from src.invitation.invitation_dto import InvitationCreateDTO
+from src.domain.invitation.invitation_dto import InvitationCreateDTO
 
 from ..database.session import ISession
 from ..models.invitation_model import InvitationModel

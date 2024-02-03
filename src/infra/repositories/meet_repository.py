@@ -1,8 +1,13 @@
 from sqlalchemy import select, update, delete
 from sqlalchemy.orm import selectinload, joinedload
 
-from src.exceptions import NotFoundError
-from src.meet.meet_dto import CreateMeetDTO, UpdateMeetDTO, MeetResponseDTO, UserMeetResponseDTO
+from src.lib.exceptions import NotFoundError
+from src.domain.meet.meet_dto import (
+    CreateMeetDTO,
+    UpdateMeetDTO,
+    MeetResponseDTO,
+    UserMeetResponseDTO
+)
 
 from ..database.session import ISession
 from ..models.meet_model import MeetModel

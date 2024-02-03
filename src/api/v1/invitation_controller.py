@@ -1,8 +1,12 @@
 from fastapi import APIRouter, HTTPException
 
-from src.exceptions import InviteError
-from src.invitation.invitation_dto import InvitationCreateDTO, GetInvitationListDTO, InvitationCheckCodeDTO
-from src.dependencies.services import IInvitationService
+from src.app.dependencies.services import IInvitationService
+from src.lib.exceptions import InviteError
+from src.domain.invitation.invitation_dto import (
+    InvitationCreateDTO,
+    GetInvitationListDTO,
+    InvitationCheckCodeDTO
+)
 
 
 router = APIRouter(prefix="/invitation", tags=["invitation"])

@@ -1,15 +1,16 @@
+import jwt
 from typing import Annotated
 
-import jwt
 from fastapi import HTTPException, status, Depends
 from fastapi.security import OAuth2PasswordBearer
 from pydantic import ValidationError
 
-from config.project_config import settings
-from src.auth.auth_dto import TokenPayload
-from ..dependencies.repositories import IUserRepository
-from src.user.user_dto import GetUserDTO
-from src.auth.token_service import ALGORITHM
+from src.app.dependencies.repositories import IUserRepository
+from src.app.config.project_config import settings
+from src.domain.auth.auth_dto import TokenPayload
+
+from src.domain.user.user_dto import GetUserDTO
+from src.domain.auth.token_service import ALGORITHM
 
 reusable_oauth2 = OAuth2PasswordBearer(
     tokenUrl=f"{settings.API_V1_STR}/login/access-token"

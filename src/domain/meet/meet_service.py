@@ -1,5 +1,5 @@
-from ..dependencies.repositories import IMeetRepository
-from src.meet.meet_dto import CreateMeetDTO, UpdateMeetDTO, MeetResponseDTO, MeetDTO
+from src.app.dependencies.repositories import IMeetRepository
+from src.domain.meet.meet_dto import CreateMeetDTO, UpdateMeetDTO, MeetResponseDTO, MeetDTO
 
 
 class MeetService:

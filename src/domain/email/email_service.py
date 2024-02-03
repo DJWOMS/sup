@@ -1,5 +1,5 @@
-from ..dependencies.repositories import IEmailRepository
-from ..dependencies.repositories import IUserRepository
+from src.app.dependencies.repositories import IEmailRepository
+from src.app.dependencies.repositories import IUserRepository
 
 
 class EmailService:

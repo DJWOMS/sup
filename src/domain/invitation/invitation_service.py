@@ -1,9 +1,9 @@
 from datetime import date
 
-from src.exceptions import InviteError
-from src.invitation.invitation_dto import InvitationCreateDTO
-from src.invitation.invitation_entity import InvitationEntity
-from ..dependencies.repositories import IInvitationRepository
+from src.lib.exceptions import InviteError
+from src.domain.invitation.invitation_dto import InvitationCreateDTO
+from src.domain.invitation.invitation_entity import InvitationEntity
+from src.app.dependencies.repositories import IInvitationRepository
 
 
 class InvitationService:

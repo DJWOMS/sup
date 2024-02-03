@@ -1,7 +1,7 @@
 from functools import wraps
 
 from fastapi import HTTPException, status
-from .exceptions import NotFoundError, AlreadyExistError
+from src.lib.exceptions import NotFoundError, AlreadyExistError
 
 
 def error_handler(func):

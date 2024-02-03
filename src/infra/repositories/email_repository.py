@@ -1,6 +1,6 @@
 from sqlalchemy import select
 
-from src.email.email_dto import CreateEmailCodeDTO
+from src.domain.email.email_dto import CreateEmailCodeDTO
 
 from ..database.session import ISession
 from ..models.verify_email_model import VerifyEmailModel
