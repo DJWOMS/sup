@@ -5,7 +5,7 @@ from datetime import date
 class InvitationBaseDTO(BaseModel):
     code: str
     at_valid: date
-    status: str = 'active'
+    status: str = "active"
 
 
 class GetInvitationListDTO(InvitationBaseDTO):

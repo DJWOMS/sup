@@ -23,7 +23,7 @@ class UserModel(Base):
     :param created_at: дата создания
     :param updated_at: дата обновления
     """
-    __tablename__ = 'users'
+    __tablename__ = "users"
 
     name: Mapped[str] = mapped_column(String(20))
     surname: Mapped[str] = mapped_column(String(20))
@@ -35,5 +35,5 @@ class UserModel(Base):
     nick_gitlab: Mapped[str] = mapped_column(String(50))
     nick_github: Mapped[str] = mapped_column(String(50))
     is_active: Mapped[bool] = mapped_column(default=False)
-    role_id: Mapped[int] = mapped_column(ForeignKey('roles.id'))
-    permission_id: Mapped[int] = mapped_column(ForeignKey('permissions.id'))
+    role_id: Mapped[int] = mapped_column(ForeignKey("roles.id"))
+    permission_id: Mapped[int] = mapped_column(ForeignKey("permissions.id"))

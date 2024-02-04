@@ -15,9 +15,9 @@ class UserMeetModel(Base):
     :param created_at: дата создания
     :param updated_at: дата обновления
     """
-    __tablename__ = 'users_meet'
+    __tablename__ = "users_meet"
 
-    meet_id: Mapped[int] = mapped_column(ForeignKey('meets.id', ondelete='CASCADE'))
-    user_id: Mapped[int] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'))
+    meet_id: Mapped[int] = mapped_column(ForeignKey("meets.id", ondelete="CASCADE"))
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"))
     color: Mapped[str]
-    user: Mapped['UserModel'] = relationship('UserModel', lazy='raise_on_sql')
+    user: Mapped["UserModel"] = relationship("UserModel", lazy="raise_on_sql")

@@ -37,7 +37,7 @@ class DatabaseHelper:
         session: AsyncSession = self.session_factory()
         try:
             yield session
-        except exc.SQLAlchemyError as error:
+        except exc.SQLAlchemyError:
             await session.rollback()
             raise
         finally:
@@ -49,7 +49,7 @@ class DatabaseHelper:
         session: AsyncSession = self.session_factory()
         try:
             yield session
-        except exc.SQLAlchemyError as error:
+        except exc.SQLAlchemyError:
             await session.rollback()
             raise
         finally:

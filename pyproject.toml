@@ -6,7 +6,7 @@ authors = ["Omelchenko Michael <socanime@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12.1"
+python = "^3.11"
 fastapi = "^0.105.0"
 uvicorn = {extras = ["standart"], version = "^0.23.2"}
 sqlalchemy = {extras = ["asyncio"], version = "^2.0.25"}
@@ -16,11 +16,15 @@ argon2-cffi = "^23.1.0"
 pydantic = {extras = ["email"], version = "^2.5.3"}
 asyncpg = "^0.29.0"
 pyjwt = "^2.8.0"
+json-log-formatter = "^0.5.2"
+python-json-logger = "^2.0.7"
 
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.4"
 ruff = "^0.1.14"
+flake8 = "^7.0.0"
+mypy = "^1.8.0"
 
 [build-system]
 requires = ["poetry-core"]

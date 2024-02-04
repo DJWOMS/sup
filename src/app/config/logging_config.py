@@ -52,3 +52,8 @@ def make_logger_conf(*confs, log_level, json_log):
 
 
 settings = Settings()
+logger_config = make_logger_conf(
+    settings.log_config,
+    log_level=settings.logging_level,
+    json_log=settings.logging_json
+)

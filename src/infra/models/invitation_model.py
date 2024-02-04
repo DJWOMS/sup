@@ -15,7 +15,7 @@ class InvitationModel(Base):
     :param created_at: дата создания приглашения
     :param updated_at: дата обновления приглашения
     """
-    __tablename__ = 'invitations'
+    __tablename__ = "invitations"
 
     code: Mapped[str]
     # TODO status должен быть Enum

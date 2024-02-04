@@ -12,7 +12,7 @@ class RoleModel(Base):
     :param created_at: дата создания
     :param updated_at: дата обновления
     """
-    __tablename__ = 'roles'
+    __tablename__ = "roles"
 
     name: Mapped[str]
     color: Mapped[str]
