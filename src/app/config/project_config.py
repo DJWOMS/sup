@@ -1,13 +1,15 @@
+from pydantic import Field
 from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    DEBUG: bool
-    SECRET_KEY: str
-    CORS_ALLOWED_ORIGINS: str
-    SECRET_KEY: str = "HGDIYGS7gsguIGS*g&(SGcg&(*CGS*&C*SGC&*GCGCuo9shGpisudp9sU"
-    API_V1_STR: str = "/api/v1"
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
+    host: str = Field(alias="APP_HOST")
+    port: int = Field(alias="APP_PORT")
+    debug: bool = Field(default=False, alias="APP_DEBUG")
+    version: str = Field(alias="APP_VERSION")
+    hooks_enabled: bool = Field(default=True, alias="APP_HOOKS_ENABLED")
+    root_path: str = Field(default="", alias="APP_ROOT_PATH")
+    timezone_shift: int = Field(default=3, alias="APP_TIMEZONE_SHIFT")
 
 
 settings = Settings()
