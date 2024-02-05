@@ -27,7 +27,7 @@ services:
     ports:
       - 5432:5432
     healthcheck:
-      test: pg_isready -d ${POSTGRES_DB} -U ${POSTGRES_USER}
+      test: pg_isready -d ${DB_NAME} -U ${DB_USER}
       interval: 10s
       timeout: 5s
       retries: 5
