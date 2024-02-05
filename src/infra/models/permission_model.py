@@ -12,7 +12,7 @@ class PermissionModel(Base):
     :param code: код права доступа
     :param description: описание прав доступа
     """
-    __tablename__ = 'permissions'
+    __tablename__ = "permissions"
 
     title: Mapped[str] = mapped_column(String(20))
     code: Mapped[int] = mapped_column(unique=True)

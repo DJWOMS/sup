@@ -15,11 +15,11 @@ class MeetModel(Base):
     :param created_at: дата создания
     :param updated_at: дата обновления
     """
-    __tablename__ = 'meets'
+    __tablename__ = "meets"
 
     title: Mapped[str]
     date: Mapped[datetime]
-    users: Mapped[list['UserMeetModel']] = relationship(
-'UserMeetModel',
-        lazy='raise_on_sql'
+    users: Mapped[list["UserMeetModel"]] = relationship(
+"UserMeetModel",
+        lazy="raise_on_sql"
     )

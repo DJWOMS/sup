@@ -13,10 +13,10 @@ class VerifyEmailModel(Base):
     :param created_at: дата создания
     :param updated_at: дата обновления
     """
-    __tablename__ = 'verify_email'
+    __tablename__ = "verify_email"
 
     code: Mapped[str]
-    user_id: Mapped[int] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'))
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"))
 
 
 

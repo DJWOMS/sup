@@ -1,7 +1,12 @@
 from fastapi import APIRouter
 from src.app.exception_handler import error_handler
 from src.app.dependencies.services import IMeetService
-from src.domain.meet.meet_dto import CreateMeetDTO, UpdateMeetDTO, MeetDTO, MeetResponseDTO
+from src.domain.meet.meet_dto import (
+    CreateMeetDTO,
+    UpdateMeetDTO,
+    MeetDTO,
+    MeetResponseDTO,
+)
 
 router = APIRouter(prefix="/meet", tags=["meet"])
 

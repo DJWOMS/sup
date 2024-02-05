@@ -20,7 +20,7 @@ class MeetRepository:
         self.session = session
 
     async def create(self, dto: CreateMeetDTO):
-        instance = MeetModel(**dto.model_dump(exclude={'users'}))
+        instance = MeetModel(**dto.model_dump(exclude={"users"}))
         _users = []
         for user in dto.users:
             _user = UserMeetModel(meet_id=instance.id, user_id=user.user_id, color=user.color)
@@ -32,7 +32,7 @@ class MeetRepository:
         return self.to_dto(instance)
 
     async def update(self, pk: int, dto: UpdateMeetDTO):
-        stmt = update(MeetModel).filter_by(id=pk).values(**dto.model_dump(exclude={'users'}))
+        stmt = update(MeetModel).filter_by(id=pk).values(**dto.model_dump(exclude={"users"}))
         result = await self.session.execute(stmt)
         if result.rowcount == 0:
             raise NotFoundError("Meet не найден")

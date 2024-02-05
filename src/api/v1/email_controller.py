@@ -14,4 +14,3 @@ async def check_email_code(code: str, service: IEmailService):
         return await service.check_code(code)
     except InviteError as e:
         raise HTTPException(status_code=400, detail=str(e))
-
