@@ -14,7 +14,7 @@ class EmailService:
         # Credentials
 
         self.user: str = os.getenv("EMAIL_USER")
-        self.password: str = os.getenv("EMAIL_PASSWORD")
+        self.password: str = os.environ.get('EMAIL_PASSWORD')
 
         # Server config
         self.smtp_port = 465
