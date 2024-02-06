@@ -36,8 +36,8 @@ def get_description(path: Path | str) -> str:
 
 
 def get_application() -> FastAPI:
-    # if logger_settings.logging_on:
-    #     logging.config.dictConfig(logger_config)  # noqa
+    if logger_settings.logging_on:
+        logging.config.dictConfig(logger_config)  # noqa
     application = FastAPI(
         title=swagger_settings.title,
         # description=get_description(swagger_settings.description),
