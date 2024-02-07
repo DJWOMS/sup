@@ -1,11 +1,6 @@
-import smtplib
-import ssl
+import aiosmtplib
 from email.mime.text import MIMEText
-
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
+from src.app.config.email_config import settings
 
 
 class EmailService:
@@ -13,15 +8,14 @@ class EmailService:
     def __init__(self):
         # Credentials
 
-        self.user: str = os.getenv("EMAIL_USER")
-        self.password: str = os.environ.get('EMAIL_PASSWORD')
+        self.user = settings.email_username
+        self.password = settings.email_password
 
         # Server config
-        self.smtp_port = 465
-        self.smtp_server = "smtp.gmail.com"
-        self.smtp_context = ssl.create_default_context()
+        self.smtp_port = settings.smtp_port
+        self.smtp_host = settings.smtp_host
 
-    def send_email(self, recipient_email: str, subject: str, body: str) -> None:
+    async def send_email(self, recipient_email: str, subject: str, body: str) -> None:
 
         # Message config
         message = MIMEText(body)
@@ -29,9 +23,16 @@ class EmailService:
         message["From"] = self.user
         message['To'] = recipient_email
 
-        # Message sending
-        with smtplib.SMTP_SSL(self.smtp_server, self.smtp_port, context=self.smtp_context) as smtp:
-            smtp.login(self.user, self.password)
-            smtp.sendmail(self.user, recipient_email, message.as_string())
+        # Email sending
+        await aiosmtplib.send(
+            message.as_string(),
+            sender=self.user,
+            recipients=recipient_email,
+            hostname=self.smtp_host,
+            port=self.smtp_port,
+            username=self.user,
+            password=self.password,
+
+        )
 
 
