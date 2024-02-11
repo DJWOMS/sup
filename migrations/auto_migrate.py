@@ -1,9 +1,17 @@
-import os
 import subprocess
+import sys
 
 
-def run_alembic_command(command):
-    alembic_versions_path = "/app/migrations/versions"
-    if not os.path.exists(alembic_versions_path):
-        os.makedirs(alembic_versions_path)
-    subprocess.run(f"python -m alembic {command}", shell=True, check=True)
+def run_alembic_command():
+    alembic_command = ["alembic"]
+
+    if len(sys.argv) > 1:
+        alembic_command.extend(sys.argv[1:])
+    else:
+        alembic_command.extend(["upgrade", "head"])
+
+    subprocess.run(alembic_command, check=True)
+
+
+if __name__ == "__main__":
+    run_alembic_command()
