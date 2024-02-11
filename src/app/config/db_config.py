@@ -13,6 +13,8 @@ class Settings(BaseSettings):
     db_password: str = Field(..., alias="DB_PASSWORD")
     # logging
     db_echo_log: bool = Field(False, alias="DB_ECHO_LOG")
+    # run auto-migrate
+    db_run_auto_migrate: bool = Field(False, alias="DB_RUN_AUTO_MIGRATE")
 
     @property
     def database_url(self) -> PostgresDsn:
