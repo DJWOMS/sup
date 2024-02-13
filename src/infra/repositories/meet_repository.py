@@ -20,16 +20,13 @@ class MeetRepository:
         self.session = session
 
     async def create(self, dto: CreateMeetDTO):
-        instance = MeetModel(**dto.model_dump(exclude={"users"}))
-        _users = []
-        for user in dto.users:
-            _user = UserMeetModel(meet_id=instance.id, user_id=user.user_id, color=user.color)
-            _users.append(_user)
-            instance.users.append(_user)
-        self.session.add_all([instance, *_users])
+        meet = MeetModel(**dto.model_dump(exclude={"users"}))
+        self.session.add(meet)
         await self.session.commit()
-        await self.session.refresh(instance)
-        return self.to_dto(instance)
+        await self.session.refresh(meet)
+        return self.to_dto(meet)
+
+    # TODO  Переписать метод update еще не дописано
 
     async def update(self, pk: int, dto: UpdateMeetDTO):
         stmt = update(MeetModel).filter_by(id=pk).values(**dto.model_dump(exclude={"users"}))
@@ -65,38 +62,21 @@ class MeetRepository:
         return self.to_dto(updated_meet)
 
     async def delete(self, pk: int):
-        stmt = delete(MeetModel).filter_by(id=pk)
+        stmt = delete(MeetModel).where(MeetModel.id == pk)
         result = await self.session.execute(stmt)
-        if result.rowcount == 0:
-            raise NotFoundError("Meet не найден")
         await self.session.commit()
+        return result.rowcount
 
     async def get(self, pk: int):
         stmt = select(MeetModel).filter_by(id=pk).options(
-           joinedload(MeetModel.users).joinedload(UserMeetModel.user)
+            selectinload(MeetModel.users).selectinload(UserMeetModel.user)
         )
         result = await self.session.execute(stmt)
-        if instance := result.unique().scalar_one_or_none():
-            return self.to_dto_with_users(instance)
-        raise NotFoundError("Meet не найден")
+        instance = result.scalars().first()
+        if instance:
+            return instance
+        else:
+            raise NotFoundError("Meet не найден")
 
     def to_dto(self, instance: MeetModel):
         return MeetResponseDTO(id=instance.id, title=instance.title, date=instance.date)
-
-    def to_dto_with_users(self, instance: MeetModel):
-        users = [
-            UserMeetResponseDTO(
-                id=user_meet.user.id,
-                name=user_meet.user.name,
-                name_telegram=user_meet.user.name_telegram,
-                nick_telegram=user_meet.user.nick_telegram,
-                color=user_meet.color
-            )
-            for user_meet in instance.users
-        ]
-        return MeetResponseDTO(
-            id=instance.id,
-            title=instance.title,
-            date=instance.date,
-            users=users
-        )
