@@ -11,6 +11,8 @@ class PermissionModel(Base):
     :param title: название права доступа
     :param code: код права доступа
     :param description: описание прав доступа
+    :param created_at: дата создания
+    :param updated_at: дата обновления
     """
     __tablename__ = "permissions"
 
