@@ -16,10 +16,8 @@ class CreateMeetDTO(MeetBaseDTO):
     users: list[UserMeetDTO]
 
 
-class UpdateMeetDTO(BaseModel):
-    title: str
-    date: datetime
-    users: list[UserMeetDTO]
+class UpdateMeetDTO(CreateMeetDTO):
+    pass
 
 
 class MeetDTO(MeetBaseDTO):
