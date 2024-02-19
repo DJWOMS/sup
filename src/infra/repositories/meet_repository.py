@@ -73,7 +73,7 @@ class MeetRepository:
 
     async def get(self, pk: int):
         stmt = select(MeetModel).filter_by(id=pk).options(
-           joinedload(MeetModel.users).joinedload(UserMeetModel.user)
+            joinedload(MeetModel.users).joinedload(UserMeetModel.user)
         )
         result = await self.session.execute(stmt)
         if instance := result.unique().scalar_one_or_none():
