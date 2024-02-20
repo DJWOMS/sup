@@ -1,14 +1,17 @@
 from abc import ABC, abstractmethod
 
+from typing import Type
+
 from sqlalchemy import select, update, delete
 
-from ..database.session import ISession
+from src.infra.database.session import ISession
+from src.infra.models.base_model import Base
 
 from pydantic import BaseModel
 
 
 class BaseRepository(ABC):
-    def __init__(self, session: ISession, model):
+    def __init__(self, session: ISession, model: Type[Base]):
         self.session = session
         self.model = model
 

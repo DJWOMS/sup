@@ -28,7 +28,7 @@ class UserModel(Base):
     name: Mapped[str] = mapped_column(String(20))
     surname: Mapped[str] = mapped_column(String(20), nullable=True)
     email: Mapped[str] = mapped_column(String(50), unique=True, index=True)
-    password: Mapped[str]
+    password: Mapped[str] = mapped_column(String(), unique=True, index=True)
     name_telegram: Mapped[str] = mapped_column(String(50))
     nick_telegram: Mapped[str] = mapped_column(String(50))
     nick_google_meet: Mapped[str] = mapped_column(String(50))
