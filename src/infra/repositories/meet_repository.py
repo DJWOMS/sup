@@ -3,8 +3,7 @@ from sqlalchemy.orm import selectinload, joinedload
 
 from src.lib.exceptions import NotFoundError
 from src.domain.meet.meet_dto import (
-    CreateMeetDTO,
-    UpdateMeetDTO,
+    MeetBaseDTO, UpdateMeetDTO,
     MeetResponseDTO,
     UserMeetResponseDTO
 )
@@ -19,14 +18,9 @@ class MeetRepository:
     def __init__(self, session: ISession):
         self.session = session
 
-    async def create(self, dto: CreateMeetDTO):
-        instance = MeetModel(**dto.model_dump(exclude={"users"}))
-        _users = []
-        for user in dto.users:
-            _user = UserMeetModel(meet_id=instance.id, user_id=user.user_id, color=user.color)
-            _users.append(_user)
-            instance.users.append(_user)
-        self.session.add_all([instance, *_users])
+    async def create(self, dto: MeetBaseDTO):
+        instance = MeetModel(**dto.model_dump())
+        self.session.add(instance)
         await self.session.commit()
         await self.session.refresh(instance)
         return self.to_dto(instance)

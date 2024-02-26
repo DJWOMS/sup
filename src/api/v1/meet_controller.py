@@ -1,4 +1,6 @@
-from fastapi import APIRouter
+from typing import Annotated
+
+from fastapi import APIRouter, Depends
 from src.app.exception_handler import error_handler
 from src.app.dependencies.services import IMeetService
 from src.domain.meet.meet_dto import (
@@ -7,13 +9,20 @@ from src.domain.meet.meet_dto import (
     MeetDTO,
     MeetResponseDTO,
 )
+from src.domain.meet.meet_service import MeetService
+from src.infra.database.session import ISession
+from src.infra.repositories.meet_repository import MeetRepository
+from src.infra.repositories.usermeet_repository import UserMeetRepository
 
 router = APIRouter(prefix="/meet", tags=["meet"])
+
+def provide_service(session: ISession):
+    return MeetService(MeetRepository(session), UserMeetRepository(session))
 
 
 @router.post("/", response_model=MeetDTO)
 @error_handler
-async def create_meet(dto: CreateMeetDTO, service: IMeetService):
+async def create_meet(dto: CreateMeetDTO, service: Annotated[MeetService, Depends(provide_service)]):
     return await service.create(dto)
 
 
