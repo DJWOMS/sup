@@ -21,5 +21,9 @@ class MeetService:
         return await self.repository.delete(pk)
 
     async def get(self, pk: int) -> MeetResponseDTO:
-        return await self.repository.get(pk)
+        meet = await self.repository.get(pk)
+        user_meet = await self.usermeet_repository.get(pk)
+        get_meet = MeetResponseDTO(**meet.model_dump())
+        get_meet.users = user_meet
+        return get_meet
 

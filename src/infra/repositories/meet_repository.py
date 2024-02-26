@@ -66,13 +66,12 @@ class MeetRepository:
         await self.session.commit()
 
     async def get(self, pk: int):
-        stmt = select(MeetModel).filter_by(id=pk).options(
-            joinedload(MeetModel.users).joinedload(UserMeetModel.user)
-        )
+        stmt = select(MeetModel).where(MeetModel.id == pk)
         result = await self.session.execute(stmt)
-        if instance := result.unique().scalar_one_or_none():
-            return self.to_dto_with_users(instance)
-        raise NotFoundError("Meet не найден")
+        instance = result.scalar_one()
+        if instance is None:
+            raise NotFoundError("Meet не найден")
+        return self.to_dto(instance)
 
     def to_dto(self, instance: MeetModel):
         return MeetResponseDTO(id=instance.id, title=instance.title, date=instance.date)

@@ -1,3 +1,5 @@
+from sqlalchemy import select
+
 from ..models.user_meet_model import UserMeetModel
 
 from ...domain.meet.meet_dto import UserMeetDTO
@@ -17,4 +19,6 @@ class UserMeetRepository:
         return _users
 
     async def get(self, meet_id: int):
-        return await self.session.query(UserMeetModel).filter_by(meet_id=meet_id).all()
+        stmt = select(UserMeetModel).where(UserMeetModel.meet_id == meet_id)
+        result = await self.session.execute(stmt)
+        return result.scalars().all()
