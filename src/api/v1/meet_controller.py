@@ -28,7 +28,7 @@ async def create_meet(dto: CreateMeetDTO, service: Annotated[MeetService, Depend
 
 @router.get("/{pk}", response_model=MeetResponseDTO)
 @error_handler
-async def get_meet(pk: int, service: IMeetService):
+async def get_meet(pk: int, service: Annotated[MeetService, Depends(provide_service)]):
     return await service.get(pk)
 
 
