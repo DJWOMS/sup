@@ -1,4 +1,4 @@
-from sqlalchemy import select
+from sqlalchemy import delete, select
 
 from ..models.user_meet_model import UserMeetModel
 
@@ -16,9 +16,20 @@ class UserMeetRepository:
             _users.append(_user)
         self.session.add_all([*_users])
         await self.session.commit()
-        return _users
+        return self.to_dto(*_users)
 
     async def get(self, meet_id: int):
         stmt = select(UserMeetModel).where(UserMeetModel.meet_id == meet_id)
         result = await self.session.execute(stmt)
-        return result.scalars().all()
+        user_meets = result.scalars().all()
+        return [self.to_dto(user_meet) for user_meet in user_meets]
+
+    async def delete(self, meet_id: int):
+        stmt = delete(UserMeetModel).where(UserMeetModel.meet_id == meet_id)
+        result = await self.session.execute(stmt)
+        await self.session.commit()
+        res = result.scalars().all()
+        return self.to_dto(res)
+
+    def to_dto(self, *args) -> list[UserMeetDTO]:
+        return [UserMeetDTO(user_id=user.user_id, color=user.color) for user in args]
