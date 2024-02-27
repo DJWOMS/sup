@@ -20,4 +20,6 @@ class UserMeetModel(Base):
     meet_id: Mapped[int] = mapped_column(ForeignKey("meets.id", ondelete="CASCADE"))
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"))
     color: Mapped[str]
-    user: Mapped["UserModel"] = relationship("UserModel", lazy="raise_on_sql")
+    #Сделать Enum
+    status: Mapped[str]
+
