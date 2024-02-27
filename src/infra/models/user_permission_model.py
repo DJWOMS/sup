@@ -5,6 +5,7 @@ from .base_model import Base
 
 
 class UserPermissionModel(Base):
+
     """ Модель разрешений пользователя
 
     :param id: идентификатор
