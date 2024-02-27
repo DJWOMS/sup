@@ -11,7 +11,7 @@ class MeetModel(Base):
     :param title: название митапа
     :param date: дата митапа
     :param color: цвет митапа
-    :param users: пользователи, учавствующие в митапе
+    :param users: пользователи, участвующие в митапе
     :param created_at: дата создания
     :param updated_at: дата обновления
     """
@@ -19,7 +19,9 @@ class MeetModel(Base):
 
     title: Mapped[str]
     date: Mapped[datetime]
-    users: Mapped[list["UserMeetModel"]] = relationship(
-"UserMeetModel",
+    color: Mapped[str]
+    users: Mapped[list["UserModel"]] = relationship(
+        back_populates="meets",
+        secondary="users_meet",
         lazy="raise_on_sql"
     )
