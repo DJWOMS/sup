@@ -1,13 +1,12 @@
 from sqlalchemy import delete, select
 
 from ..models.user_meet_model import UserMeetModel
-
 from ...domain.meet.meet_dto import UserMeetDTO
+
 
 class UserMeetRepository:
     def __init__(self, session):
         self.session = session
-
 
     async def create(self, dto: list[UserMeetDTO], meet_id: int):
         _users = []
