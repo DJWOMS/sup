@@ -1,5 +1,5 @@
 from sqlalchemy import select, update, delete
-from sqlalchemy.orm import selectinload, joinedload
+from sqlalchemy.orm import selectinload
 
 from src.lib.exceptions import NotFoundError
 from src.domain.meet.meet_dto import (
