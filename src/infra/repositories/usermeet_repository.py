@@ -16,20 +16,22 @@ class UserMeetRepository:
             _users.append(_user)
         self.session.add_all([*_users])
         await self.session.commit()
-        return self.to_dto(*_users)
+        return self.to_dto(_users)
 
     async def get(self, meet_id: int):
         stmt = select(UserMeetModel).where(UserMeetModel.meet_id == meet_id)
         result = await self.session.execute(stmt)
         user_meets = result.scalars().all()
-        return [self.to_dto(user_meet) for user_meet in user_meets]
+        return self.to_dto(user_meets)
 
     async def delete(self, meet_id: int):
         stmt = delete(UserMeetModel).where(UserMeetModel.meet_id == meet_id)
-        result = await self.session.execute(stmt)
+        await self.session.execute(stmt)
         await self.session.commit()
-        res = result.scalars().all()
-        return self.to_dto(res)
 
-    def to_dto(self, *args) -> list[UserMeetDTO]:
-        return [UserMeetDTO(user_id=user.user_id, color=user.color) for user in args]
+    def to_dto(self, users: list[UserMeetModel]) -> list[UserMeetDTO]:
+        for user in users:
+            yield UserMeetDTO(
+                user_id=user.user_id,
+                color=user.color
+            )
