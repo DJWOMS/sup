@@ -1,7 +1,7 @@
 from sqlalchemy import delete, select
 
-from ..models.user_meet_model import UserMeetModel
-from ...domain.meet.meet_dto import UserMeetDTO
+from src.infra.models.user_meet_model import UserMeetModel
+from src.domain.meet.meet_dto import UserMeetDTO
 
 
 class UserMeetRepository:
