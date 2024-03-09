@@ -15,7 +15,6 @@ class PermissionModel(Base):
     :param description: описание прав доступа
     :param users: все юзеры, у которых есть это право доступа
     """
-
     __tablename__ = "permissions"
 
     title: Mapped[str] = mapped_column(String(20))

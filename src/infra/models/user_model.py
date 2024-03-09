@@ -28,7 +28,6 @@ class UserModel(Base):
     :param created_at: дата создания
     :param updated_at: дата обновления
     """
-
     __tablename__ = "users"
 
     name: Mapped[str] = mapped_column(String(20))
