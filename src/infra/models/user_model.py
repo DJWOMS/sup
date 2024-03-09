@@ -1,9 +1,10 @@
-from typing import Optional, List
+from typing import List
 
 from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .base_model import Base
+from .user_permission_model import UserPermissionModel
 
 
 class UserModel(Base):
@@ -14,7 +15,7 @@ class UserModel(Base):
     :param surname: фамилия пользователя
     :param email: email пользователя
     :param password: пароль пользователя
-    :param аватар: ссылка на аватар пользователя
+    :param avatar_link: ссылка на аватар пользователя
     :param name_telegram: имя в телеграм
     :param nick_telegram: ник в телеграм
     :param nick_google_meet: ник в google meet
@@ -24,17 +25,16 @@ class UserModel(Base):
     :param is_admin: является ли пользователь админом
     :param role_id: роль пользователя
     :param permissions: список прав пользователя
-    :param meets: список митапов пользователя
     :param created_at: дата создания
     :param updated_at: дата обновления
     """
     __tablename__ = "users"
 
     name: Mapped[str] = mapped_column(String(20))
-    surname: [Mapped[str]] = mapped_column(String(20), nullable=True)
+    surname: Mapped[str] = mapped_column(String(20), nullable=True)
     email: Mapped[str] = mapped_column(String(50), unique=True, index=True)
     password: Mapped[str]
-    avatar: Mapped[str] = mapped_column(String(50))
+    avatar_link: Mapped[str] = mapped_column(String(50))
     name_telegram: Mapped[str] = mapped_column(String(50))
     nick_telegram: Mapped[str] = mapped_column(String(50))
     nick_google_meet: Mapped[str] = mapped_column(String(50))
@@ -48,5 +48,3 @@ class UserModel(Base):
         secondary="user_permission",
         lazy="raise_on_sql"
     )
-
-
