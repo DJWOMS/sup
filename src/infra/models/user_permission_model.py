@@ -4,6 +4,7 @@ from sqlalchemy.orm import mapped_column, Mapped
 from .base_model import Base
 
 
+
 class UserPermissionModel(Base):
     """ Модель разрешений пользователя
 
@@ -27,3 +28,4 @@ class UserPermissionModel(Base):
     ),
         primary_key=True
     )
+
